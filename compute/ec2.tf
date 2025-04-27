@@ -2,7 +2,7 @@ resource "aws_instance" "bastion" {
   ami             = data.aws_ami.ubuntu.id
   instance_type   = var.instance_type
   subnet_id       = var.public_subnet_id
-  security_groups = [aws_security_group.bastion_sg.id]
+  vpc_security_group_ids = [aws_security_group.bastion_sg.id]
   key_name        = aws_key_pair.sshkeypair.key_name
   
     tags = {
@@ -17,7 +17,7 @@ resource "aws_instance" "application" {
   ami             = data.aws_ami.ubuntu.id
   instance_type   = var.instance_type
   subnet_id       = var.private_subnet_id
-  security_groups = [aws_security_group.application_sg.id]
+  vpc_security_group_ids = [aws_security_group.application_sg.id]
   key_name        = aws_key_pair.sshkeypair.key_name
 
     tags = {
