@@ -1,0 +1,6 @@
+resource "aws_nat_gateway" "nat_gw" {
+  allocation_id = aws_eip.nat_gw_ip.id
+  subnet_id     = aws_subnet.subnets["public-subnet"].id
+
+  depends_on = [aws_internet_gateway.gw]
+}
