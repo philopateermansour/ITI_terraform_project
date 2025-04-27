@@ -72,6 +72,7 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
   lambda_function {
     lambda_function_arn = aws_lambda_function.test_lambda.arn
     events              = ["s3:ObjectCreated:*", "s3:ObjectRemoved:*"]
+    filter_suffix = ".state"
   }
 
   depends_on = [aws_lambda_permission.allow_bucket]

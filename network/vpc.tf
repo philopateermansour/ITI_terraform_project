@@ -4,3 +4,4 @@ resource "aws_vpc" "my_vpc" {
     Name = var.vpc_name
   }
 }
+
